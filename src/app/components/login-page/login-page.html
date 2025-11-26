@@ -1,0 +1,74 @@
+<div class="h-dvh bg-white text-black flex text-center">
+  <div class="flex flex-col items-center justify-center space-y-5 w-328">
+    <div class="w-10/12">
+      <h2 class="text-4xl py-4 primary-color bona-nova-bold">ATC Group – Angular Frontend Task</h2>
+    </div>
+    <form action="" class="space-y-6 w-11/12 md:w-6/12" [formGroup]="myLogForm">
+      <h4 class="text-3xl primary-color bona-nova-bold">Login</h4>
+      <div class="space-y-3 mx-10">
+        <div class="flex relative items-center">
+          <input
+            type="email"
+            placeholder="Enter Email*"
+            class="form-control"
+            formControlName="email"
+            #email
+          />
+          <span class="absolute right-2 text-2xl text-gray-500 font-bold">@</span>
+          @if(!emailValid.value){
+          <p></p>
+          } @else if (emailValid.valid) {
+          <p></p>
+          } @else {
+          <p class="absolute -right-14 text-red-600">invalid</p>
+          }
+        </div>
+        <div class="flex relative items-center">
+          <input
+            type="{{ type }}"
+            placeholder="Enter Password*"
+            class="form-control"
+            formControlName="password"
+            #password
+          />
+          <button (click)="showHidePassword()" class="p-1 absolute right-0 h-full cursor-pointer">
+            <img src="/eye.png" alt="" />
+          </button>
+        </div>
+        @if(!passwordValid.value){
+        <div></div>
+        } @else if(passwordValid.valid){
+        <div></div>
+        } @else {
+        <div class="flex flex-col text-left pl-4 text-red-600">
+          <span class>Password length should be greater than 8 characters*</span>
+        </div>
+        }
+      </div>
+
+      <hr class="text-gray-400 mx-12" />
+      <p>
+        Test values: email: <span class="font-bold">testatc@example.com</span>, password:
+        <span class="font-bold">Passw0rd!</span>
+      </p>
+      <div class="flex justify-around text-[20px]">
+        @if(myLogForm.valid){
+        <button
+          class="bg-primary-color rounded font-bold p-3 mx-5 bg-black text-white hover:bg-yellow-600 cursor-pointer transition duration-200"
+          (click)="loginUser(password, email)"
+        >
+          Login
+        </button>
+        } @else {
+        <button
+          type="button"
+          class="cursor-not-allowed bg-gray-700 text-gray-200 p-3 rounded"
+          disabled
+        >
+          Login
+        </button>
+        }
+      </div>
+    </form>
+  </div>
+</div>

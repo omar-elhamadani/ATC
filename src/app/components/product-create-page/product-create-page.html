@@ -1,0 +1,62 @@
+<div class="h-dvh bg-white text-black flex text-center">
+  <div class="flex flex-col items-center justify-center space-y-5 w-328">
+    <div class="flex mt-30">
+      <button
+        class="absolute left-2.5 bg-primary-color rounded font-bold p-3 mx-5 bg-black text-white hover:bg-yellow-600 cursor-pointer transition duration-200"
+        (click)="back()"
+      >
+        Back
+      </button>
+      <h4 class="text-3xl bona-nova-bold">Create new Product</h4>
+    </div>
+
+    <form action="" class="space-y-6 w-11/12 md:w-6/12" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="space-y-2">
+        <div class="space-x-2 flex relative">
+          <input class="form-control" formControlName="name" placeholder="Name*" />
+        </div>
+        <div class="flex relative items-center">
+          <input class="form-control" formControlName="description" placeholder="Description*" />
+        </div>
+        <div class="flex relative items-center">
+          <input class="form-control" formControlName="stock" type="number" placeholder="Stock*" />
+        </div>
+        <div class="flex relative items-center">
+          <input class="form-control" formControlName="price" type="number" placeholder="Price*" />
+        </div>
+        <div class="flex relative items-center">
+          <input class="form-control" formControlName="currency" placeholder="Currency*" />
+        </div>
+
+        <div class="flex relative items-center">
+          <label
+            ><input type="checkbox" class="accent-yellow-500" formControlName="is_active" />
+            Active</label
+          >
+        </div>
+        <div *ngIf="error" style="color: red">{{ error }}</div>
+      </div>
+
+      <hr class="text-gray-400 mx-12" />
+      <div class="flex justify-around text-[20px]">
+        @if(form.valid){
+        <button
+          class="bg-primary-color rounded font-bold p-3 mx-5 bg-black text-white hover:bg-yellow-600 cursor-pointer transition duration-200"
+          [disabled]="form.invalid"
+          type="submit"
+        >
+          Create
+        </button>
+        } @else {
+        <button
+          type="button"
+          class="cursor-not-allowed bg-gray-700 text-gray-200 p-3 rounded"
+          disabled
+        >
+          Create
+        </button>
+        }
+      </div>
+    </form>
+  </div>
+</div>
